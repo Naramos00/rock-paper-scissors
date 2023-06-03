@@ -1,25 +1,51 @@
+
+let playerCount = 0;
+let computerCount = 0;
+
+const rpsBtns = document.querySelectorAll('.button-choice');
+
+rpsBtns.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.id, computerChoice());
+    })
+}
+
+);
+
+
 function playRound(playerSelection, computerSelection){
+
+    const playerScore = document.querySelector('#playerScore');
+    const computerScore = document.querySelector('#compScore');
+
+
     let winLoseMsg;
-    if(playerSelection === "Rock" && computerSelection === "Scissors"){
-        winLoseMsg = "You Win! Rock beats Scissors";
+    if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
+        (playerSelection === "Paper" && computerSelection === "Rock") ||
+        (playerSelection === "Scissors" && computerSelection === "Paper")) {
+        winLoseMsg = `You Win! ${playerSelection} beats ${computerSelection}`;
+        ++playerCount;
+        playerScore.textContent = playerCount;
+
+        if(playerCount === 5){
+            winLoseMsg = "You win! Skynet is no more."
+            document.querySelectorAll('.button-choice').forEach(e => e.disabled = true);
+            playAgain();
+        }
     }
-    else if(playerSelection === "Rock" && computerSelection === "Paper"){
-        winLoseMsg = "You Lose! Paper beats Rock";
-    }
-    else if(playerSelection === "Paper" && computerSelection === "Rock"){
-        winLoseMsg = "You Win! Paper beats Rock";
-    }
-    else if(playerSelection === "Paper" && computerSelection === "Scissors"){
-        winLoseMsg = "You Lose! Scissors beats Paper";
-    }
-    else if(playerSelection === "Scissors" && computerSelection === "Paper"){
-        winLoseMsg = "You Win! Scissors beats Paper";;
-    }
-    else if(playerSelection === "Scissors" && computerSelection === "Rock"){
-        winLoseMsg = "You Lose! Rock beats Scissors";;
+    else if (playerSelection === computerSelection){
+        winLoseMsg = `It's a tie. You both chose ${playerSelection}.`
     }
     else{
-        winLoseMsg = "Its a Tie!";
+        winLoseMsg = `You Lose! ${computerSelection} beats ${playerSelection}`
+        ++computerCount;
+        computerScore.textContent = computerCount;
+
+        if(computerCount === 5){
+            winLoseMsg = "You Lost! Skynet has won."
+            document.querySelectorAll('.button-choice').forEach(e => e.disabled = true);
+            playAgain();
+        }
     }
 
     const divResult = document.querySelector('.results-container');
@@ -30,48 +56,6 @@ function playRound(playerSelection, computerSelection){
     newResult.classList.add('results-msg');
 
     return 0;
-
-
-}
-
-/*function game(){
-    let count = 0;
-    let possibleWin1 = "You Win! Paper beats Rock";
-    let possibleWin2 = "You Win! Rock beats Scissors";
-    let possibleWin3 = "You Win! Scissors beats Paper";
-
-    for(i = 1; i <=5; ++i){
-        let playerChoice = prompt("Rock, Paper, or Scissors!");
-        let outCome = (playRound(playerChoice, computerChoice()));
-    
-        if(outCome == possibleWin1 || outCome == possibleWin2 || outCome == possibleWin3){
-            count++;
-        }
-        if(outCome === "Its a Tie!"){
-            i-=1;
-        }
-
-        console.log(outCome);
-    }
-
-    if(count >= 3){
-        console.log("You Win the game!");
-    }
-    else{
-        console.log("You Lost the game!");
-    }
-
-    return 0;
-}
-*/
-
-function capitalize(word1){
-    word1 = word1.toLowerCase();
-    let letter1 = word1.charAt(0);
-    letter1 = letter1.toUpperCase();
-    word1 = word1.replace(word1.at(0), letter1);
-
-    return word1;
 }
 
 function computerChoice(){
@@ -90,14 +74,31 @@ function computerChoice(){
     return rpsChoice;
 }
 
-//game();
-const rpsBtns = document.querySelectorAll('.button-choice');
 
-rpsBtns.forEach((button) => {
-    button.addEventListener('click', () => {
-        playRound(button.id, computerChoice());
-    })
+function playAgain(){
+    const playDiv = document.getElementById('play-again');
+    const playBtn = document.createElement('button');
+    playBtn.textContent = "Play again?";
+    playBtn.setAttribute('id', 'redo');
+
+    playDiv.appendChild(playBtn);
+
+    playerCount = 0;
+    computerCount = 0;
+
+    const redoGame = document.getElementById('redo');
+    redoGame.addEventListener('click', () => {
+        playDiv.removeChild(playBtn)
+        document.querySelectorAll('.button-choice').forEach(e => e.disabled = false);
+    });
+
 }
 
-);
+
+
+
+
+//learned how to disable buttons 
+//used arrow functions
+//used an even listner
 
