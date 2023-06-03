@@ -1,29 +1,31 @@
 function playRound(playerSelection, computerSelection){
-    playerSelection = capitalize(playerSelection);
+    //playerSelection = capitalize(playerSelection);
+    console.log(playerSelection);
+    console.log(computerSelection);
     let winLoseMsg;
     if(playerSelection === "Rock" && computerSelection === "Scissors"){
-        return winLoseMsg = "You Win! Rock beats Scissors";
+        console.log("You Win! Rock beats Scissors");
     }
     else if(playerSelection === "Rock" && computerSelection === "Paper"){
-        return winLoseMsg = "You Lose! Paper beats Rock";
+        console.log("You Lose! Paper beats Rock");
     }
     else if(playerSelection === "Paper" && computerSelection === "Rock"){
-        return winLoseMsg = "You Win! Paper beats Rock";
+        console.log("You Win! Paper beats Rock");
     }
     else if(playerSelection === "Paper" && computerSelection === "Scissors"){
-        return winLoseMsg = "You Lose! Scissors beats Paper";
+        console.log("You Lose! Scissors beats Paper");
     }
     else if(playerSelection === "Scissors" && computerSelection === "Paper"){
-        return winLoseMsg = "You Win! Scissors beats Paper";
+        console.log("You Win! Scissors beats Paper");
     }
     else if(playerSelection === "Scissors" && computerSelection === "Rock"){
-        return winLoseMsg = "You Lose! Rock beats Scissors";
+        console.log("You Lose! Rock beats Scissors");
     }
     else{
-        return winLoseMsg = "Its a Tie!";
+        console.log("Its a Tie!")
     }
 
-    return 0;
+
 }
 
 /*function game(){
@@ -83,3 +85,13 @@ function computerChoice(){
 }
 
 //game();
+const rpsBtns = document.querySelectorAll('.button-choice');
+
+rpsBtns.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.id, computerChoice());
+    })
+}
+
+);
+
