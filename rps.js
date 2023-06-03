@@ -1,29 +1,35 @@
 function playRound(playerSelection, computerSelection){
-    //playerSelection = capitalize(playerSelection);
-    console.log(playerSelection);
-    console.log(computerSelection);
     let winLoseMsg;
     if(playerSelection === "Rock" && computerSelection === "Scissors"){
-        console.log("You Win! Rock beats Scissors");
+        winLoseMsg = "You Win! Rock beats Scissors";
     }
     else if(playerSelection === "Rock" && computerSelection === "Paper"){
-        console.log("You Lose! Paper beats Rock");
+        winLoseMsg = "You Lose! Paper beats Rock";
     }
     else if(playerSelection === "Paper" && computerSelection === "Rock"){
-        console.log("You Win! Paper beats Rock");
+        winLoseMsg = "You Win! Paper beats Rock";
     }
     else if(playerSelection === "Paper" && computerSelection === "Scissors"){
-        console.log("You Lose! Scissors beats Paper");
+        winLoseMsg = "You Lose! Scissors beats Paper";
     }
     else if(playerSelection === "Scissors" && computerSelection === "Paper"){
-        console.log("You Win! Scissors beats Paper");
+        winLoseMsg = "You Win! Scissors beats Paper";;
     }
     else if(playerSelection === "Scissors" && computerSelection === "Rock"){
-        console.log("You Lose! Rock beats Scissors");
+        winLoseMsg = "You Lose! Rock beats Scissors";;
     }
     else{
-        console.log("Its a Tie!")
+        winLoseMsg = "Its a Tie!";
     }
+
+    const divResult = document.querySelector('.results-container');
+    const oldResult = document.querySelector('.results-msg');
+    const newResult = document.createElement('div');
+    newResult.textContent = winLoseMsg;
+    divResult.replaceChild(newResult,oldResult);
+    newResult.classList.add('results-msg');
+
+    return 0;
 
 
 }
