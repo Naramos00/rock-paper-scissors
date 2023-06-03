@@ -26,7 +26,7 @@ function playRound(playerSelection, computerSelection){
     return 0;
 }
 
-function game(){
+/*function game(){
     let count = 0;
     let possibleWin1 = "You Win! Paper beats Rock";
     let possibleWin2 = "You Win! Rock beats Scissors";
@@ -55,6 +55,8 @@ function game(){
 
     return 0;
 }
+*/
+
 function capitalize(word1){
     word1 = word1.toLowerCase();
     let letter1 = word1.charAt(0);
@@ -63,6 +65,7 @@ function capitalize(word1){
 
     return word1;
 }
+
 function computerChoice(){
     let choice = Math.floor(Math.random() * (3)) + 1;
     let rpsChoice;
@@ -79,4 +82,4 @@ function computerChoice(){
     return rpsChoice;
 }
 
-game();
+//game();
