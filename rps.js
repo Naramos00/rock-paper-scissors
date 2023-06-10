@@ -87,10 +87,20 @@ function playAgain(){
     computerCount = 0;
 
     const redoGame = document.getElementById('redo');
+    const playerScore = document.getElementById('playerScore');
+    const computerScore = document.getElementById('compScore');
+
     redoGame.addEventListener('click', () => {
         playDiv.removeChild(playBtn)
         document.querySelectorAll('.button-choice').forEach(e => e.disabled = false);
+        const originalMsg = document.querySelector('.results-msg');
+        originalMsg.textContent = "Do not let Skynet win!";
+
+        playerScore.textContent = playerCount;
+        computerScore.textContent = computerCount;
     });
+
+
 
 }
 

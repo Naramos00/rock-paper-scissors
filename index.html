@@ -6,28 +6,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="btns-container">
-        <button id="Rock" class="button-choice">rock</button>
-        <button id="Paper" class="button-choice">paper</button>
-        <button id="Scissors" class="button-choice">scissors</button>
+
+    <div class="header">
+        Rock, Paper, Scissors
     </div>
 
-    <div class="score-container">
-        <div class="player-cnt">
-            <div>Player:</div>
-            <div id="playerScore">0</div>
+    <div class="gameContainer">
+        <div class="score-container">
+            <div id="btns-container">
+                <button id="Rock" class="button-choice image-button"><img src="images/Rock.jpeg" alt="Rock"></button>
+                <button id="Paper" class="button-choice image-button"><img src="images/Paper.jpeg" alt="Paper"></button>
+                <button id="Scissors" class="button-choice image-button"><img src="images/Scissors.jpeg" alt="Scissors"></button>
+            </div>
+
+            <div class="scores">
+                <div class="player-cnt">
+                    <div>Player:&nbsp;</div>
+                    <div id="playerScore">0</div>
+                </div>
+                <div class="comp-cnt">
+                    <div>Computer:&nbsp;</div>
+                    <div id="compScore">0</div>
+                </div>
+            </div>
+
+            <div class="results-container">
+                <div class="results-msg">Do not let Skynet win!</div>
+                <div id="play-again"></div>
+            </div>
+
         </div>
-        <div class="comp-cnt">
-            <div>Computer:</div>
-            <div id="compScore">0</div>
-        </div>
-    </div>
 
-    <div class="results-container">
-        <div class="results-msg">Do not let Skynet win!</div>
     </div>
-
-    <div id="play-again"></div>
 
     <script src="rps.js"></script>
 </body>
